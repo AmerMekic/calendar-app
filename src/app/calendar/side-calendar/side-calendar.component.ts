@@ -146,7 +146,8 @@ export class SideCalendarComponent extends CalendarPageComponent implements OnIn
     let thereIs = false;
     let i = 0;
     while (i < this.allAppointments.length){
-      if(value.day === this.allAppointments[i].date.getDate() && value.month === this.allAppointments[i].date.getMonth()){
+      if(value.day === this.allAppointments[i].date.getDate() && value.month === this.allAppointments[i].date.getMonth()
+      && value.year === this.allAppointments[i].date.getFullYear()){
         thereIs = true;
         break;
       }
