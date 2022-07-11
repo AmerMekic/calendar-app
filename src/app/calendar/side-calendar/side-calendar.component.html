@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="header">
+        <div *ngIf="currentMonth !== null" class="header__date">{{months[currentMonth] + ' ' + currentYear}}</div>
+        <div class="header__controls">
+            <fa-icon [icon]="leftArrow" (click) = "handlePrevMonth()"></fa-icon>
+            <fa-icon [icon]="rightArrow" (click) = "handleNextMonth()"></fa-icon>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="grid__days">
+            <div [class]="day === 'S' ? 'grid__days__weekday' : 'grid__days__workday'" *ngFor="let day of weekDays">{{day}}</div>
+        </div>
+
+        <div class="grid__numbers">
+            <div
+            [class] = "'grid__numbers__item grid__numbers__item--' + getCurrentDayClass(dayNum, i) "
+            *ngFor="let dayNum of days; let i = index"
+            (click) = "handleDayClick(dayNum)">{{dayNum.day}}
+            <div class="active-appointment" *ngIf="isThereAnAppointment(dayNum)"></div>
+        </div>
+            
+        </div>
+    </div>  
+</div>

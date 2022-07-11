@@ -1,0 +1,169 @@
+@import '../../../styles.scss';
+
+
+
+
+.view-modal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 80vh;
+    background-color: $view-modal-bg-color;
+
+    &__controls{
+
+        display: flex;
+        padding: $control-padding;
+        background-color: $view-modal-item-bg-color;
+        justify-content: space-between;
+        font-size: $hotel-name-font-size;
+        font-weight: bold;
+        margin-bottom: 30px;
+        
+        &-date-time{
+            display: flex;
+            width: 60%;
+            justify-content: space-between;
+            &__date{
+                display: flex;
+                
+                & fa-icon{
+                    color: $appointment-icons-bg-color;
+                    margin-right: $appointment-item-margin-right;
+                }
+            }
+
+            &__time{
+                display: flex;
+                
+                & fa-icon{
+                    color: $appointment-icons-bg-color;
+                    margin-right: $appointment-item-margin-right;
+                }
+            }
+        }
+
+        &__arrows{
+            display: flex;
+            width: 5%;
+            justify-content: space-between;
+        }
+
+        
+    }
+
+    &__hotels{
+
+        margin: $view-modal-hotel-margin;
+        background-color: $view-modal-item-bg-color;
+        padding: $control-padding;
+
+        &-appointment{
+            list-style: none;
+            margin: 10px 0 0 0;
+            padding: 0;
+
+            &-item{
+
+                margin: -1px;
+                padding: $control-padding;
+                @include borders($border-line, $border-color, 0px);
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+.header{
+
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 20px;
+    &-hotel{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        &__name{
+
+            font-size: $hotel-name-font-size;
+            font-weight: bold;
+        }
+        &__address{
+
+            font-size: $hotel-name-font-size;
+            color: $weekday-font-color;
+        }
+    }
+
+    &-agent{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        &__name{
+
+            font-size: $hotel-name-font-size;
+            font-weight: bold;
+        }
+        &__type{
+
+            font-size: $hotel-name-font-size;
+            color: $weekday-font-color;
+        }
+    }
+}
+
+.list-time{
+    display: flex;
+    font-size: $hotel-name-font-size;
+
+    & div{
+
+        display: flex;
+        margin-right: $appointment-item-margin-right;
+        & div{
+            margin-right: $appointment-item-margin-right;
+        }
+
+        & fa-icon{
+
+            color: $appointment-icons-bg-color;
+            margin-right: $appointment-item-margin-right;
+        }
+        
+    }
+}
+
+.list-user{
+    display: flex;
+    width: 20%;
+    justify-content: flex-start;
+    font-size: $hotel-name-font-size;
+    
+    & fa-icon{
+
+        color: $appointment-icons-bg-color;
+        margin-right: $appointment-item-margin-right;
+    }
+}
+
+.empty-appointments{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    font-size: 20px;
+    margin-top: -30px;
+    font-weight: bold;
+}
+
+.overflow{
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.overflow::-webkit-scrollbar{
+    display: none;
+}

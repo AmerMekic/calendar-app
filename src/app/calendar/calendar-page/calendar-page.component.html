@@ -1,0 +1,24 @@
+<div class="page-container">
+    
+    <div class="calendar-container" *ngIf="currentDate$ | async; else loading">
+
+        <side-calendar class="calendar-container__side-calendar"
+        [currentDay]="(currentDate$ | async)!.day"
+        [currentMonth]="(currentDate$ | async)!.month"
+        [currentYear]="(currentDate$ | async)!.year">
+        </side-calendar>
+
+        <main-calendar class="calendar-container__main-calendar"
+        [currentDay]="(currentDate$ | async)!.day"
+        [currentMonth]="(currentDate$ | async)!.month"
+        [currentYear]="(currentDate$ | async)!.year"
+        [week]="(currentDate$ | async)!.week"
+        >
+        </main-calendar>
+        
+    </div>
+
+    <ng-template #loading >Loading...</ng-template>
+
+</div>
+

@@ -1,0 +1,104 @@
+@import '../../../styles.scss';
+
+.container{
+    @include borders($border-line, $border-color, 0px);
+    background-color: $component-bg-color;
+    
+    
+}
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+    padding: $control-padding;
+    font-size: $control-font-size;
+    border-bottom: $border-line solid $border-color;
+    
+    
+    &__arrows{
+
+        & fa-icon{
+            margin-left: $control-icons-margin-left;
+        }
+    }
+}
+
+.calendar{
+    
+    &__weekdays{
+        display: grid;
+        text-align: center;
+        grid-template-columns: 1fr repeat(7, 2fr);
+        font-size: $calendar-items-font-size;
+        
+        &__item{
+            padding: 10px 0;
+            
+            &--active{
+                
+                background-color: $active-day-bg-color;
+                color: $active-day-font-color;
+                
+            }
+        }
+        
+    }
+
+    &__hours{
+        display: grid;
+        text-align: center;
+        grid-template-columns: 1fr repeat(7, 2fr);
+        grid-template-rows: repeat(13, 100px);
+        font-size: $calendar-items-font-size;
+        height: calc(100vh - 165px);
+        overflow: scroll;
+
+        & div{
+            @include borders($border-line, $border-color, 0px);
+        }
+
+        & div:hover:not(.hour){
+            cursor: pointer;
+            background-color: $active-week-bg-color;
+        }
+        
+        & p{
+            font-size: $calendar-items-font-size;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        & .hour{
+            border-left: none;
+            text-align: start;
+            padding: 5px 0 0 5px;
+        }
+
+        & .end{
+            border-right: none;
+        }
+    }
+
+    &__hours::-webkit-scrollbar{
+        display: none;
+    }
+
+}
+
+.modal-popup{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: $popup-bg-color;
+
+    &__item{
+        width: 40%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

@@ -1,0 +1,40 @@
+<div class="container" *ngIf="appointments$ | async">
+
+    <div class="controls">
+        <div class="controls__month">{{date}}</div>
+        <div class="controls__arrows">
+            <fa-icon [icon]="leftArrow" (click) = "handlePrevWeek()"></fa-icon>
+            <fa-icon [icon]="rightArrow" (click) = "handleNextWeek()"></fa-icon>
+        </div>
+    </div>
+
+    <div class="calendar">
+        <div class="calendar__weekdays">
+            <div></div>
+            <div *ngFor="let weekDays of week; let i = index"
+            [class] = "'calendar__weekdays__item calendar__weekdays__item--' +  getActiveDayClass(i)">{{weekDays.day+ ' ' + weekDayNames[i]}}
+
+            </div>
+        </div>
+        <div class="calendar__hours">
+            <div *ngFor="let view of hours; let i = index"
+            [class] = 'getClass(i)'
+            (click)="handleClickedDate(view, $event)">
+                {{view.name}}
+                <p *ngIf="view.name === '' && view.appointments.length === 1">
+                    {{view.appointments.length + ' viewing'}}
+                </p>
+                <p *ngIf="view.name === '' && view.appointments.length > 1">
+                    {{view.appointments.length + ' viewings'}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-popup" (click)="handlePopupClose($event, modalDiv)" *ngIf="showAppointmentPopup" #modalDiv>
+        <app-view-modal 
+        class="modal-popup__item"
+        (nextAppointmentEmitter)="getNextAppointment($event)"
+        (prevAppointmentEmmiter)="getPrevAppointment($event)"
+        [appointmentsOnCurrentDay]="clickedAppointments"></app-view-modal>
+    </div>
+</div>
