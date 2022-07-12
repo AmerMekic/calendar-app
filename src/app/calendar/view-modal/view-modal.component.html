@@ -1,0 +1,58 @@
+<div class="container" *ngIf="appointmentsOnCurrentDay">
+    
+    <div class="view-modal">
+        <div class="view-modal__controls">
+            <div class="view-modal__controls-date-time">
+                <div class="view-modal__controls-date-time__date">
+                    <fa-icon [icon]="calendarIcon"></fa-icon>
+                    <div>{{getDate()}}</div>
+                </div>
+                <div class="view-modal__controls-date-time__time">
+                    <fa-icon [icon]="clockIcon"></fa-icon>
+                    <div>{{appointmentsOnCurrentDay.startHour + ':00 - ' + appointmentsOnCurrentDay.endHour +':00'}}</div>
+                </div>
+            </div>
+            <div class="view-modal__controls__arrows">
+                <fa-icon [icon]="leftArrow" (click) = "prevAppointment()"></fa-icon>
+                <fa-icon [icon]="rightArrow" (click) = "nextAppointment()"></fa-icon>
+            </div>
+        </div>
+
+        <div *ngIf="appointmentsByHotel.length === 0" class="empty-appointments">
+            <p>There are no viewings on current time</p>
+        </div>
+        <div class="overflow">
+            <div class="view-modal__hotels" *ngFor="let hotel of appointmentsByHotel">
+                
+                <div class="header">
+                    <div class="header-hotel">
+                        <div class="header-hotel__name">{{hotel.name}}</div>
+                        <div class="header-hotel__address">{{hotel.address}}</div>
+                    </div>
+                    <div class="header-agent">
+                        <div class="header-agent__name">{{agent}}</div>
+                        <div class="header-agent__type">{{agentType}}</div>
+                    </div>
+                </div>
+                <ul class="view-modal__hotels-appointment">
+                    <li class="view-modal__hotels-appointment-item"*ngFor="let appointment of hotel.appointments">
+                        <div class="list-time">
+                            <div>
+                                <fa-icon [icon]="calendarIcon"></fa-icon>
+                                <div>{{getDateOfAppointment(appointment)}}</div>
+                            </div>
+                            <div>
+                                <fa-icon [icon]="clockIcon"></fa-icon>
+                                <div>{{getTime(appointment)}}</div>
+                            </div>
+                        </div>
+                        <div class="list-user">
+                            <fa-icon [icon]="userIcon"></fa-icon>
+                            <div>{{getInvitees(appointment)}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

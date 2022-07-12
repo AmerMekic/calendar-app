@@ -1,0 +1,94 @@
+@import '../../../styles.scss';
+.container{
+    @include borders($border-line, $border-color, 0px);
+    background-color: $component-bg-color;
+    border-right: none;
+    user-select: none;
+    
+}
+
+.header{
+    display: flex;
+    font-size: $control-font-size;
+    padding: $control-padding;
+    border-bottom: 1px solid $border-color;
+    justify-content: space-between;
+
+    &__controls{
+        
+        & fa-icon{
+            margin-left: $control-icons-margin-left;
+            cursor: pointer;
+        }
+    }
+}
+
+.grid{
+    display: block;
+
+    &__days{
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 20px;
+        font-size: $calendar-items-font-size;
+        &__weekday{
+            
+            color: $weekday-font-color;
+        }
+    }
+
+    &__numbers{
+        padding: 0 20px;
+        
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        
+        text-align: center;
+        font-size: $calendar-items-font-size;
+        &__item{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 7px 0;
+            cursor: pointer;
+            &--current{
+
+                color: $font-color;
+            }
+
+            &--not-current{
+
+                color: $weekday-font-color;
+            }
+
+            &--current-active{
+
+                color: $active-day-font-color;
+                background-color: $active-day-bg-color;
+            }
+
+            &--current-active-week{
+                
+                background-color: $active-week-bg-color;
+            }
+
+            &--not-current-active-week{
+
+                background-color: $active-week-bg-color;
+                color: $weekday-font-color;
+            }
+        }
+    }
+}
+
+.active-appointment{
+    margin: -1px;
+    height: 0.4rem;
+    width: 0.4rem;
+    border-radius: 100px;
+    background-color: $active-day-bg-color;
+}
